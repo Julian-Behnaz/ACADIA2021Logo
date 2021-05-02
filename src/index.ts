@@ -27,7 +27,7 @@ function fract(v: number) {
   return v - (v | 0);
 }
 
-// Some random number in 0..1 based on some seed values
+// Some random number based on some seed values
 function hash(x: number, y: number, z: number)  // replace this by something better
 {
   const px = 50.0 * fract(x * 0.3183099 + 0.71);
@@ -60,7 +60,7 @@ function logo(ts: number) {
   ctx.strokeStyle = '#000048';
   for (let i = 0; i < 100; i++) {
     const a = 0.3;
-    const fnStart = a;//(Math.sin(10 * hash(i, i, i) + ts * 0.001) + 1) * 0.5;
+    const fnStart = (Math.sin(15 * hash(i, i, i) + ts * 0.001) + 1.4) * 0.5;
     const start = (rad * a) + fnStart * ((1 - a) * rad);
     const b = 0.7;
     const fnEnd = (Math.cos(hash(i, 1, 5) + ts * 0.001) + 1) * 0.5;
@@ -77,7 +77,7 @@ function logo(ts: number) {
   ctx.strokeStyle = '#ead9e8';
   for (let i = 0; i < 100; i++) {
     const a = 0.3;
-    const fnStart = a;//(Math.sin(10 * hash(i, i, i) + ts * 0.001) + 1) * 0.5;
+    const fnStart = (Math.sin(20 * hash(i, i, i) + ts * 0.001) + 1.5) * 0.5;
     const start = (rad * a) + fnStart * ((1 - a) * rad);
     const b = 0.7;
     const fnEnd = (Math.cos(hash(i, 1, 5) + ts * 0.001) + 1) * 0.5;
@@ -108,7 +108,7 @@ function logo(ts: number) {
   ctx.fillStyle = '#402828';
   for (let i = 0; i < 100; i++) {
     const a = 0.3;
-    const fnStart = a;//(Math.sin(10 * hash(i, i, i) + ts * 0.001) + 1) * 0.5;
+    const fnStart = (Math.sin(10 * hash(i, i, i) + ts * 0.001) + 1.5) * 0.8;
     const start = (rad * a) + fnStart * ((1 - a) * rad);
     const b = 0.7;
     const fnEnd = (Math.cos(hash(i, 1, 5) + ts * 0.001) + 1) * 0.5;
@@ -140,7 +140,20 @@ function logo(ts: number) {
 
   ctx.font = '48px Poppins';
   ctx.textAlign = 'center';
+  ctx.fillStyle = '#ffffff';
   ctx.fillText('Realignment', CX, CY);
+
+  ctx.font = '20px Poppins regular';
+  ctx.textAlign = 'center';
+  ctx.fillText('Toward Critical Computation', CX, CY + 40);
+
+  ctx.font = '16px Poppins thin';
+  ctx.textAlign = 'center';
+  ctx.fillText('ACADIA2021', CX, CY + 80);
+
+  ctx.font = '16px Poppins thin';
+  ctx.textAlign = 'center';
+  ctx.fillText('Online+Global', CX, CY + 100);
 
   requestAnimationFrame(logo);
 }
